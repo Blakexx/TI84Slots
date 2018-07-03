@@ -1,0 +1,71 @@
+**CODE FOR FUN.8xp**
+ClrHome
+ClrAllLists
+­1→S
+While S≤0 or fPart(S)≠0 or S≥1000
+Disp "PLAYERS?"
+DelVar ⌊S
+Input S
+real(S)→S
+ClrHome
+End
+S→dim(L₁)
+0→K
+0→I
+While K≠45
+getKey→K
+If K=105
+Then
+Output(6,4,"         ")
+Output(7,4,"         ")
+Output(8,4,"          ")
+randInt(1,6)→A
+randInt(1,6)→B
+randInt(1,6)→C
+0→D
+0→T
+0→P
+While D<3
+If D=0 and T=0
+Output(4,5,A)
+If D<2 and T=0
+Output(4,8,B)
+If D<3 and T=0
+Output(4,11,C)
+If D=0 and T=0
+remainder((A+1),7)→A
+If D<2 and T=0
+remainder((B+1),7)→B
+If D<3 and T=0
+remainder((C+1),7)→C
+remainder(T+1,3-P)→T
+(D≥1)→P
+If getKey=105
+(D+1)→D
+End
+If A=B and B=C
+Then
+Output(6,4,"JACKPOT!")
+Else
+Output(6,6,"LOSE!")
+End
+Output(7,4,"POINTS:")
+10((A=B)+(A=C)+(B=C))→V
+Output(7,11,V)
+L₁(I+1)+V→L₁(I+1)
+If L₁(I+1)≥100
+Then
+ClrHome
+Output(4,5,I+1)
+Output(4,6," WINS!")
+ClrAllLists
+""→Str1
+Stop
+End
+Output(8,4,I+1)
+Output(8,6,"SCORE:")
+Output(8,12,L₁(I+1))
+remainder(I+1,dim(L₁))→I
+End
+End
+ClrAllLists
